@@ -289,7 +289,7 @@
         </div>
         <div class="col-sm-12 col-md-3">
           <div class="d-flex">
-            <div class="icon_position send"></div>
+            <div class="icon_position ok send"></div>
             <div>
               <div>SEGUNDO PASO</div>
               <strong>Dirección</strong>
@@ -315,61 +315,208 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <h2 class="ico_logo">Sumario del Producto</h2>
-        <hr>
-        <h3 class="ico_logo">Seleccione una paquetería:</h3>
-        <div class="p-0 mb-3">
-          <a class="btn btn-light">Para calcular el costo de envió, inicie sesión</a>
+      <div class="row mt-3">
+        <div class="col-sm-12 col-md-6">
+          <h2 class="mb-4">DIRECCIÓN DE ENVÍO</h2>
+          <form action="">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="ubication" placeholder="Ubicación" value="México">
+              <label for="ubication">Ubicación*</label>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="name" placeholder="name@example.com">
+                  <label for="name">Nombre*</label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="name_2" placeholder="name@example.com">
+                  <label for="name_2">Apellido*</label>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex mb-3 custom_num">
+              <style>
+                .custom_num select{
+                  border-right: none;
+                  background-color: transparent;
+                  border-top: 1px solid #ced4da;
+                  border-bottom: 1px solid #ced4da;
+                  border-left: 1px solid #ced4da;
+                  border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+                  max-width: 100px;
+                  /* Oculta la flecha por defecto */
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  outline: none;
+                  padding: .375rem .75rem;
+                }
+                .custom_num .form-control {
+                  border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+                }
+              </style>
+              <select class="form-select" name="" id="">
+                <option>MX +52</option>
+              </select>
+              <div class="form-floating w-100">
+                <input type="email" class="form-control" id="tel" placeholder="name@example.com">
+                <label for="tel">Número de Teléfono*</label>
+              </div>
+            </div>
+            <div class="form-floating mb-3 position-relative">
+              <textarea class="form-control" placeholder="Calle y Número (ejm: Jose Vasconcelos 105)" id="address"></textarea>
+              <label for="address">Dirección*</label>
+              <small class="position-absolute" style="bottom: .25rem; right: .25rem;">0 /35</small>
+            </div>
+            <div class="form-floating mb-3 position-relative">
+              <textarea class="form-control" placeholder="Appartement. suite, résldence. bátlment, etage. etc. (optionnel)" id="reference"></textarea>
+              <label for="reference">Referencias</label>
+              <small class="position-absolute" style="bottom: .25rem; right: .25rem;">0 /35</small>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="country" placeholder="name@example.com">
+                  <label for="country">Estadol/Provincia*</label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="city" placeholder="name@example.com">
+                  <label for="city">Ciudad*</label>
+                </div>
+              </div>
+            </div>
+            <div class="legal mb-3">
+              <div class="d-flex justify-content-between">
+                <div class="left">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Hacer predeterminado</label>
+                  </div>
+                </div>
+                <div class="d-flex right justify-content-between">
+                  <a class="mx-2" href="">Consejos de Dirección General</a>
+                  <a class="mx-2" href="">Política de privacidad</a>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <style>
+                .security {
+                  background-image: url(https://img.icons8.com/ios/50/00ff00/lock--v1.png);
+                  background-repeat: no-repeat;
+                  background-position: left;
+                  background-size: 15px;
+                  padding-left: 20px;
+                }
+              </style>
+              <h6 class="security">Seguridad y privacidad</h6>
+              <div class="text-muted">
+                Mantenemos medidas físicas, técnicas y administrativas estándar de la industria para proteger su información
+                personal.
+              </div>
+            </div>
+            <div class="text-end">
+              <button class="btn btn-primary px-5" type="submit">GUARDAR</button>
+            </div>
+          </form>
         </div>
-        <h3 class="ico_logo">Tienda Alma Joyería</h3>
-        <section>
-          <div class="d-flex item mb-5">
-            <div class="left">
-              <div class="d-flex">
-                <figure class="container_img_cart me-3">
-                  <img src="https://magazine.velasresorts.com/wp-content/uploads/2020/05/veracruz-1-1024x535.jpg"
-                    class="w-100 border">
-                  <!-- <img src="https://m.media-amazon.com/images/I/61LAN+ZCF7L._AC_SX569_.jpg"
-                    class="w-100 border"> -->
-                  <!-- <img src="https://m.media-amazon.com/images/I/61LAN+ZCF7L._AC_SX569_.jpg"
-                    class="w-100 border"> -->
-                </figure>
-                <div class="d-flex flex-column align-item justify-content-between">
-                  <div>
-                    <strong class="d-block mb-2">Diseño de paisaje para ciudades biodiversas Diseño de paisaje para ciudades biodiversas</strong>
-                    <div class="d-flex align-items-center">
-                      <select class="d-block" name="" id="">
-                        <option>Talla para gente extremadamente obesa</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                      </select>
-                      <strong class="ms-3">$MXN 90.00</strong>
+        <div class="col-sm-12 col-md-6">
+          <h2 class="ico_logo">RESUMEN DE SU COMPRA</h2>
+          <hr>
+          <section>
+            <h3 class="ico_logo">Seleccione una paquetería:</h3>
+            <div class="text-end">
+              <div class="btn btn-light text-start form-select w-50">
+                <div class="text-blue fw-bold">Redpack</div>
+                <div class="text-blue">Eco Express: <strong>$MXN 85</strong></div>
+                <div class="text-blue">Tiempo estimado de llegada <strong>5 días</strong></div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3 class="ico_logo">Tienda Alma Joyería</h3>
+            <section>
+              <div class="d-flex item mb-5">
+                <div class="left">
+                  <div class="d-flex">
+                    <figure class="container_img_cart me-3">
+                      <img src="https://magazine.velasresorts.com/wp-content/uploads/2020/05/veracruz-1-1024x535.jpg"
+                        class="w-100 border">
+                      <!-- <img src="https://m.media-amazon.com/images/I/61LAN+ZCF7L._AC_SX569_.jpg"
+                                  class="w-100 border"> -->
+                      <!-- <img src="https://m.media-amazon.com/images/I/61LAN+ZCF7L._AC_SX569_.jpg"
+                                  class="w-100 border"> -->
+                    </figure>
+                    <div class="d-flex flex-column align-item justify-content-between">
+                      <div>
+                        <strong class="d-block mb-2">Diseño de paisaje para ciudades biodiversas Diseño de paisaje para ciudades
+                          biodiversas</strong>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-evenly">
+                        <div class="d-flex align-items-center container_increment_items">
+                          <button class="" type="button">-</button>
+                          <input type="number" min="1" max="10" value="1" placeholder="1 - 10">
+                          <button class="" type="button">+</button>
+                        </div>
+                        <strong class="ms-3">$MXN 90.00</strong>
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <button class="btn btn_favorite" type="button">Guardar para más tarde</button>
-                    <button class="btn btn_trash" type="button">Borrar</button>
-                  </div>
                 </div>
               </div>
+            </section>
+          </section>
+          <section class="mb-3">
+            <div class="d-flex justify-content-between">
+              <div class="text-muted">Subtotal</div>
+              <span>$MXN 90.00</span>
             </div>
-            <div class="right w-100">
-              <div class="d-flex align-items-center justify-content-center flex-1">
-                <div class="d-flex align-items-center justify-content-evenly">
-                  <div class="d-flex align-items-center container_increment_items">
-                    <button class="" type="button">-</button>
-                    <input type="number" min="1" max="10" value="1" placeholder="1 - 10">
-                    <button class="" type="button">+</button>
-                  </div>
-                  <strong class="ms-3">$MXN 90.00</strong>
-                </div>
+            <div class="d-flex justify-content-between">
+              <div class="text-muted">Costo de envío</div>
+              <span>$MXN 85.00</span>
+            </div>
+            <div class="d-flex justify-content-between fw-bold">
+              <div class="text-muted">TOTAL</div>
+              <strong>$MXN 175.00</strong>
+            </div>
+          </section>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="left text-pink-500">
+              <span>CUPÓN DE DESCUENTO</span>
+              <style>
+                .custom_2 input {
+                  padding-right: 50px;
+                  border: none;
+                  outline: none !important;
+                }
+                .custom_2 button {
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                }
+                .custom_2 {
+                  padding-right: 50px;
+                  border: 1px solid pink !important;
+                  border-radius: 2rem;
+                  overflow: hidden;
+                }
+              </style>
+              <div class="position-relative border custom_2">
+                <input class="form-control" type="text">
+                <button class="btn btn-primary rounded-circle">></button>
               </div>
-              <button class="btn btn-primary d-block w-100" type="button">Pagar ahora</button>
+              <small class="text-muted">
+                * Una vez aplicado el cupón no se volver a redimir
+              </small>
             </div>
+            <button class="btn btn-primary" type="button">REALIZAR COMPRA</button>
           </div>
-        </section>
+        </div>
       </div>
     </section>
     <section class="container py-4 text-center">
