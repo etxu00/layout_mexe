@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mexe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+      .container_img_cart {
+        margin: 0;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 190px;
+        position: relative;
+        overflow: hidden;
+      }
+    
+      .container_img_cart img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    
+      .item select {
+        border: none;
+        background-color: #e6e8ec;
+        padding: .25rem 2.5rem .25rem 1rem;
+        width: fit-content;
+        border-radius: 1rem;
+        /* Oculta la flecha por defecto */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        max-width: 250px;
+        outline: none;
+      }
+    
+      .btn_trash:hover,
+      .btn_favorite:hover {
+        background-color: #e6e8ec;
+      }
+    
+      .btn_favorite,
+      .btn_trash {
+        border-radius: 2rem;
+      }
+    
+      .btn_favorite {
+        background-image: url(https://wwwdemo.mexemarket.com.mx/assets/icons2/heart.svg);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 2rem;
+        padding-left: 2rem;
+      }
+    
+      .container_increment_items * {
+        background-color: transparent;
+        border: 1px solid #e6e8ec;
+        text-align: center;
+      }
+    
+      .container_increment_items button {
+        padding: auto 5rem;
+        display: block;
+      }
+    
+      .container_increment_items button:first-child {
+        border-radius: 2rem 0 0 2rem;
+      }
+    
+      .container_increment_items button:last-child {
+        border-radius: 0 2rem 2rem 0;
+      }
+    
+      .container_increment_items input {
+        border-left: 0;
+        border-right: 0;
+      }
+    
+      .item .right {
+        max-width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+    
+      .flex-1 {
+        flex: 1;
+      }
+
+      .icon_position.ok {
+        background-color: #00008b;
+      }
+      .icon_position {
+        margin: 0 1rem 0 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: #e6e8ec;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1.5rem;
+      }
+      .icon_position.cart.ok {
+        background-image: url(https://img.icons8.com/ios/50/ffffff/shopping-cart--v1.png);
+      }
+      .icon_position.send.ok {
+        background-image: url(https://img.icons8.com/ios/50/ffffff/shopping-cart--v1.png);
+      }
+      .icon_position.cash.ok {
+        background-image: url(https://img.icons8.com/ios/50/ffffff/shopping-cart--v1.png);
+      }
+      .icon_position.logo.ok {
+        background-image: url(https://img.icons8.com/ios/50/ffffff/shopping-cart--v1.png);
+      }
+      .icon_position.cart {
+        background-image: url(https://img.icons8.com/ios/50/00008b/shopping-cart--v1.png);
+      }
+      .icon_position.send {
+        background-image: url(https://img.icons8.com/ios/50/00008b/shopping-cart--v1.png);
+      }
+      .icon_position.cash {
+        background-image: url(https://img.icons8.com/ios/50/00008b/shopping-cart--v1.png);
+      }
+      .icon_position.logo {
+        background-image: url(https://img.icons8.com/ios/50/00008b/shopping-cart--v1.png);
+      }
+      .ico_logo {
+        padding: 0 0 0 2.5rem;
+        background-image: url(https://wwwdemo.mexemarket.com.mx/verify.svg);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 2rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="bg-primary">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mexe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Vende en Mexe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Registrate</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Español
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">MX</a></li>
+                    <li><a class="dropdown-item" href="#">USD</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">日本　(JP)</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Nuevo León México
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categorias
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Favoritos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Mi tienda</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Itzé
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="btn btn-outline-primary" href="#">Menú</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Envío gratis</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Call Center</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tutorial</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Ayuda</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="container my-3">
+      <div class="row">
+        <div class="col-sm-12 col-md-3">
+          <div class="d-flex">
+            <div class="icon_position ok cart"></div>
+            <div>
+              <div>PRIMER PASO</div>
+              <strong>Carrito</strong>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <div class="d-flex">
+            <div class="icon_position ok send"></div>
+            <div>
+              <div>SEGUNDO PASO</div>
+              <strong>Dirección</strong>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <div class="d-flex">
+            <div class="icon_position ok cash"></div>
+            <div>
+              <div>TERCER PASO</div>
+              <strong>Pago</strong>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+          <div class="d-flex">
+            <div class="icon_position ok logo"></div>
+            <div>
+              <div>CUARTO PASO</div>
+              <strong>Pedido completo</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row my-5 align-items-center justify-content-center">
+        <div class="col-sm-12 col-md-8">
+          <article class="mb-4">
+            <h2 class="">Hola Itzé,</h2>
+            <p>
+              Gracias por comparar en <strong>Alma Joyería</strong>, hemos recibido tu pedido, te mandaremos
+              un email cuando este en camino.
+            </p>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center flex-column">
+                <p >N. De Pedido: <strong style="color: hotpink;">#GHKJLPIIOPOJÑJFKLKJ</strong></p>
+                <button class="btn btn-primary px-5" type="button">RASTREA O MANEJA TU PEDIDO</button>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <table class="table table-borderless">
+                  <tr>
+                    <td>Subtotal:</td>
+                    <td class="text-end">$MXN90.OO</td>
+                  </tr>
+                  <tr>
+                    <td>Precio de Envío:</td>
+                    <td class="text-end">$MXN180.OO</td>
+                  </tr>
+                  <tr>
+                    <td>Garantia de Envío:</td>
+                    <td class="text-end">$MXN19.OO</td>
+                  </tr>
+                  <tr>
+                    <td>En total:</td>
+                    <td class="text-end"><strong>$MNX 289.00</strong></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="d-flex align-items-center">
+                  <figure class="container_img_cart me-3">
+                    <img src="https://magazine.velasresorts.com/wp-content/uploads/2020/05/veracruz-1-1024x535.jpg"
+                      class="w-100 border">
+                  </figure>
+                  <div>
+                    <h4>Dije estelar</h4>
+                    <p class="m-0">Vendido por: <strong>Alma Joyería</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 d-flex justify-content-center align-items-center flex-column">
+                <p class="w-100 h3 text-end">$MXN90.OO</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <address>
+                  <p class="m-0"><strong>Dirección de envío</strong></p>
+                  <p class="m-0">Itzé Barragán</p>
+                  <p class="m-0">San Dieguito #13</p>
+                  <p class="m-0">Cuernavaca, Morelos</p>
+                  <p class="m-0">06458, México.</p>
+                </address>
+              </div>
+              <div class="col-sm-12 col-md-6 d-flex justify-content-center align-items-center flex-column">
+                <p class="w-100 h3">Estimada llegada</p>
+                <p class="w-100 h3" style="color: green">Miércoles Mayo 27, 2023</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="container py-4 text-center">
+      <h4>Mexemarket</h4>
+      <p>
+        En Mexemarket somos un marketpkace mexicano que atrae a clientes de todo el mundo en busca de productos únicos
+        fabricados en México. Pero somos més que eso: somos una
+        comunidad comprometida con el cambio positivo, Nos enorgullece apoyar a pequeños negocios, promover el comercio local y
+        tener un enfoque consciente del impacto en las
+        personas y el planeta. Únete a nosotros para descubrir y adquirir productos auténticos y ser parte de una comunidad que
+        impulsa un futuro mejor.
+      </p>
+      <h4>¿Porqué Mexemarket?</h4>
+      <p>
+        Apoyamos a creadores independientes, pequeñas empresas, pymes y productores locales a través de Mexemarket. Nuestra
+        visión es permitir que miles de personas puedan
+        vender productos que adoran, todos hechos en México. Eliminamos la necesidad de almacenes y facilitamos el proceso para
+        que puedas conectar directamente con los productos
+        y IOS creadores. Queremos asegurarnos de que encuentres productos extraordinarios y que IOS creadores no se vean
+        marginados por intermediarios, apoyándolos directamente.
+        Juntos, creamos un impacto positivo en la comunidad.
+      </p>
+    </section>
+    <section class="container py-4">
+      <h4>Ahora es más fácil abrir tu tienda</h4>
+      <p>Abre tu tienda</p>
+      <a class="btn btn-primary">Abre tu tienda Mexe</a>
+    </section>
+  </main>
+  <footer class="pt-4 pt-md-5 border-top">
+    <div class="container">
+      <div class="row mb-5 pb-5 border-bottom">
+        <div class="col-6 col-md">
+          <h5>Compra</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tarjetas de regalo</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Mapa de Sitio</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">glag de Mexe</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Mexe USA</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Vende</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Manual de vendedor</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Grupos</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tutoriales</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Sobre Mexe</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">MexeMarket</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Politicas</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Empleo</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Impacto Social</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Ayuda</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Centro de Ayuda</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacidad</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tutoriales de uso</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Call Center</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mb-5 pb-5">
+        <div class="text-muted">Payment</div>
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <a class="d-inline-block rounded-circle bg-primary me-3" href="#" style="width: 64px; height: 64px;">facebook</a>
+            <a class="d-inline-block rounded-circle bg-primary me-3" href="#" style="width: 64px; height: 64px;">facebook</a>
+            <a class="d-inline-block rounded-circle bg-primary me-3" href="#" style="width: 64px; height: 64px;">facebook</a>
+            <a class="d-inline-block rounded-circle bg-primary me-3" href="#" style="width: 64px; height: 64px;">facebook</a>
+            <a class="d-inline-block rounded-circle bg-primary me-3" href="#" style="width: 64px; height: 64px;">facebook</a>
+          </div>
+          <div class="col-sm-12 col-md-6 text-end">
+            <p class="row-cols-md-3">Pagos Aceptados</p>
+            <img width="48" height="48" src="https://img.icons8.com/color/48/visa.png" alt="visa" />
+            <img width="48" height="48" src="https://img.icons8.com/color/48/mastercard.png" alt="mastercard" />
+            <img width="48" height="48" src="https://img.icons8.com/color/48/paypal.png" alt="paypal" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-primary">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center text-white">
+          <p class="m-0">Mexemarket @ 2023, All Rights Reserved</p>
+          <ul class="list-unstyled d-flex">
+            <li class="me-3">
+              <a class="link-secondary text-decoration-none text-white" href="#">Privacidad</a>
+            </li>
+            <li class="me-3">
+              <a class="link-secondary text-decoration-none text-white" href="#">Terminos</a>
+            </li>
+            <li class="me-3">
+              <a class="link-secondary text-decoration-none text-white" href="#">Mapa de Sitio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+</body>
+</html>
